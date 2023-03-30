@@ -9,6 +9,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+
+import static org.openqa.selenium.Keys.CONTROL;
 
 public class CalendarModule_StepDefinitions extends CalendarPage{
 
@@ -112,7 +115,7 @@ public class CalendarModule_StepDefinitions extends CalendarPage{
 
                 BrowserUtils.waitFor(5);
                 calendarPage.weekButton.click();
-                BrowserUtils.waitFor(3);
+                BrowserUtils.waitFor(5);
         }
         @Then("the user should display Weekly Calender view")
         public void the_user_should_display_weekly_calender_view () {
@@ -134,6 +137,7 @@ public class CalendarModule_StepDefinitions extends CalendarPage{
 
                 BrowserUtils.waitFor(2);
                 calendarPage.monthButton.click();
+                BrowserUtils.waitFor(10);
         }
         @Then("user should display Monthly Calender view")
         public void user_should_display_monthly_calender_view () {
@@ -160,16 +164,30 @@ public class CalendarModule_StepDefinitions extends CalendarPage{
                 calendarPage.eventTitle.sendKeys("Demo meeting");
         }
 
-        @And("user select a date and a time for the event")
-        public void userSelectADateAndATimeForTheEvent() {
+
+        @When("user enter start a date and a time of the event")
+        public void userEnterStartADateAndATimeOfTheEvent() {
 
                // BrowserUtils.waitForVisibility(CalendarPage.localDateAndTime,3);
                // Assert.assertTrue(CalendarPage.localDateAndTime.isDisplayed());
 
-                calendarPage.fromButton.sendKeys("gwerwwe");
+                inputFromDateAndTime.sendKeys(Keys.chord(CONTROL,"a")+Keys.CLEAR);
+                BrowserUtils.waitFor(5);
+                calendarPage.inputFromDateAndTime.sendKeys("from 03/31/2023 at 5:00 PM");
+                BrowserUtils.waitFor(5);
+
 //                BrowserUtils.clickWithJS(fromButton);
 //                BrowserUtils.clickWithJS(selectDate);
+        }
+        @And("user enter end a date and a time of the event")
+        public void userEnterEndADateAndATimeOfTheEvent() {
 
+                inputToDateAndTime.sendKeys(Keys.chord(CONTROL,"a")+Keys.CLEAR);
+                BrowserUtils.waitFor(5);
+                calendarPage.inputToDateAndTime.sendKeys("to 03/31/2023 at 7:00 PM");
+                BrowserUtils.waitFor(5);
+
+                calendarPage.eventTitle.click();
 
         }
 
@@ -188,33 +206,59 @@ public class CalendarModule_StepDefinitions extends CalendarPage{
         @Then("The user should see the new event created in the Monthly Calendar view")
         public void the_user_should_see_the_new_event_created_in_the_monthly_calendar_view () {
 
-        }
-        /*@When("user clicks {string} option")
-        public void user_clicks_option (String string){
+                calendarPage.personalButton.click();
+                BrowserUtils.waitFor(3);
+                calendarPage.actionButton.click();
+                BrowserUtils.waitFor(3);
+                calendarPage.monthButton.click();
+                BrowserUtils.waitFor(3);
+
+                Assert.assertTrue(calendarPage.calendarMonthlyView.isDisplayed());
+
+
+
 
         }
-
-         */
-
-
         @When("user clicks the three dot icon")
         public void user_clicks_the_three_dot_icon () {
+
+                calendarPage.threeDotsButton.click();
+                BrowserUtils.waitFor(3);
+
+
 
         }
         @When("user select on the {string} option")
         public void user_select_on_the_option (String string){
 
+                calendarPage.personalButton.click();
+                BrowserUtils.waitFor(3);
+
+
         }
         @When("user click on the saved event")
         public void user_click_on_the_saved_event () {
 
-        }
-        @When("user see the saved event on the pop up page")
-        public void user_see_the_saved_event_on_the_pop_up_page () {
+                calendarPage.savedEvent.click();
+                BrowserUtils.waitFor(3);
 
         }
+       // @When("user see the saved event on the pop up page")
+        //public void user_see_the_saved_event_on_the_pop_up_page () {}
+
+        @And("user click more opion button on the pop up page")
+        public void userClickMoreOpionButtonOnThePopUpPage() {
+
+                calendarPage.moreButton.click();
+                BrowserUtils.waitFor(3);
+        }
+
         @When("user click on the three dot icon top on the left")
         public void user_click_on_the_three_dot_icon_top_on_the_left () {
+
+                calendarPage.threeDots.click();
+
+                BrowserUtils.waitFor(3);
 
         }
         @When("user should view more options on the dropdown")

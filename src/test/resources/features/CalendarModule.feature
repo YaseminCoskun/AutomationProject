@@ -12,7 +12,7 @@ Feature: Calendar Module
     When the user select on the "Day" option
     Then the user should display the Daily Calender view
 
-
+@wip
   Scenario: Weekly calender view
     When the user click on Calendar Module
     And the user click three dot icon
@@ -27,17 +27,19 @@ Feature: Calendar Module
       Then user should display Monthly Calender view
 
 
-      @wip
+
       Scenario: Displayed create a new event under the Calendar module and
       see it on the related day through the Monthly Calendar view
         When the user click on Calendar Module
         And user clicks Personal option
         And user click on the +New event button
         And user can enter event title
-        And user select a date and a time for the event
+        When user enter start a date and a time of the event
+        And user enter end a date and a time of the event
         When the user click on the save button
         And user create a new event successfully
         Then The user should see the new event created in the Monthly Calendar view
+
 
 
         Scenario: Delete any event through the Monthly Calendar view
@@ -45,9 +47,9 @@ Feature: Calendar Module
           When the user click on Calendar Module
           And user clicks Personal option
           And user clicks the three dot icon
-          And user select on the "Month" option
+          And user select on the Month option
           When user click on the saved event
-          And user see the saved event on the pop up page
+          And user click more opion button on the pop up page
           And user click on the three dot icon top on the left
           And user should view more options on the dropdown
           And user select on the delete option
