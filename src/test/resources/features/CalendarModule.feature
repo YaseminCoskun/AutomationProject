@@ -5,21 +5,21 @@ Feature: Calendar Module
     When user enter with valid credentials
     And user is on the dashboard page
 
-
+@MEETS10-367 @wip
   Scenario: Daily calender view
     When the user click on Calendar Module
     And the user clicks three dot icon
-    When the user select on the "Day" option
+    When the user select on the Day option
     Then the user should display the Daily Calender view
 
-@wip
+@MEETS10-368 @wip
   Scenario: Weekly calender view
     When the user click on Calendar Module
     And the user click three dot icon
     And the user select on the Week option
     Then the user should display Weekly Calender view
 
-
+@MEETS10-369 @wip
     Scenario: Monthly calender view
       When the user click on Calendar Module
       And user clicks three dot icon
@@ -27,11 +27,10 @@ Feature: Calendar Module
       Then user should display Monthly Calender view
 
 
-
+@MEETS10-370 @wip
       Scenario: Displayed create a new event under the Calendar module and
       see it on the related day through the Monthly Calendar view
         When the user click on Calendar Module
-        And user clicks Personal option
         And user click on the +New event button
         And user can enter event title
         When user enter start a date and a time of the event
@@ -41,11 +40,10 @@ Feature: Calendar Module
         Then The user should see the new event created in the Monthly Calendar view
 
 
-
+  @MEETS10-371 @wip
         Scenario: Delete any event through the Monthly Calendar view
         by clicking on the event and then using “more” option
           When the user click on Calendar Module
-          And user clicks Personal option
           And user clicks the three dot icon
           And user select on the Month option
           When user click on the saved event
